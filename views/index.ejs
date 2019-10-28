@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include navi/head %>
+</head>
+
+<body>
+  <% include navi/header %>
+  <div class="container">
+    <form action="/login/login_process" method="post">
+      <div class="form-group">
+        <label for="id">id</label>
+        <input type="text" class="form-control" id="id" name="id" placeholder="id를 입력하세요"><br />
+        <label for="password">password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="password를 입력하세요"><br />
+      </div>
+      <button type="submit" class="btn btn-outline-info">로그인</button>
+      <button type="button" class="btn btn-outline-dark" onclick="location.href='./login/create'">계정생성</button>
+    </form>
+  </div>
+</body>
+
+</html>
