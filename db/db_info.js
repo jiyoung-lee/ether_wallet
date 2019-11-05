@@ -7,4 +7,6 @@ const db = mysql.createConnection({
     database: 'ethwallet' //db schema name
 });
 
+db.connect(); //mysql 접속
+
 module.exports = db;
