@@ -7,3 +7,9 @@ CREATE TABLE `wallet_info` (
   PRIMARY KEY (`num`)
 );
 
+CREATE TABLE `txhash` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` VARCHAR(15) NOT NULL,
+  `txhash` VARCHAR(255) NOT NULL, 
+  PRIMARY KEY (`id`)
+)

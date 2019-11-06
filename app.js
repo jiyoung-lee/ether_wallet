@@ -5,6 +5,7 @@ const path = require('path');
 const indexRouter = require('./routes/index');
 const createRouter = require('./routes/create');
 const mainRouter = require('./routes/main');
+const sendRouter = require('./routes/send');
 
 const app = express();
 
@@ -19,8 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/create', createRouter);
 app.use('/main', mainRouter);
-
-
+app.use('/send', sendRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
