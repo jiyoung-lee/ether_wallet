@@ -2,6 +2,7 @@ const express = require('express');
 const Web3 = require('web3');
 const router = express.Router();
 const bcrypt = require('bcrypt-nodejs');
+const CryptoJS = require('crypto-js');
 const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io'));
 
 const db = require('../db/db_info')
@@ -32,9 +33,11 @@ router.get('/', function (req, res) {
 
 router.post('/create_process', function (req, res) {
     let account = web3.eth.accounts.create();
-    let {id, password } = req.body;
+    let {id, password} = req.body;
+    let password1 = bcrypt.hashSync(password)
+    let privatekey1 = CryptoJS.AES.encrypt(account.privateKey,'123').toString();
     let sql = 'insert into wallet_info(userid, password, public_key, private_key) values(?, ?, ?, ?)';
-    db.query(sql, [id, password, account.address, account.privateKey], function (err, result) {
+    db.query(sql, [id, password1, account.address, privatekey1], function (err, result) {
         if(err){
             return res.redirect('/err');
         } else {

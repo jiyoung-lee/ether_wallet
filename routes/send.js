@@ -1,7 +1,7 @@
 const express = require('express');
 const Web3 = require('web3');
 const router = express.Router();
-const bcrypt = require('bcrypt-nodejs');
+const CryptoJS = require('crypto-js');
 const Tx = require('ethereumjs-tx').Transaction;
 const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io'));
 
@@ -38,18 +38,18 @@ router.post('/send_process', async function (req, res) {
   let { private_key, public_key, userid } = req.session;
   let { toAddress, value, gasPrice } = req.body;
 
+  let privatekey = CryptoJS.AES.decrypt(private_key, '123').toString(CryptoJS.enc.Utf8);
+
   if (toAddress.length !== 42) {
     return res.redirect('/err')
   }
+
   let ckad = web3.utils.checkAddressChecksum(toAddress);
   if (ckad === false) {
     return res.redirect('/err')
   }
-  if (typeof(value, gasPrice) !== Number){
-    return res.redirect('/err')
-  }
 
-  let privateKey_ran = Buffer.from(private_key.substring(2), 'hex');
+  let privateKey_ran = Buffer.from(privatekey.substring(2), 'hex');
   let nonce = await web3.eth.getTransactionCount(public_key, "pending")
   let gwei = 9
 
@@ -72,6 +72,7 @@ router.post('/send_process', async function (req, res) {
       console.log('잔액부족')
       return res.redirect('/err')
     }
+
     var sql = 'insert into txhash (userid, txhash) values(?, ?)'
     db.query(sql, [userid, hash], function (err, result) {
       if (err) {

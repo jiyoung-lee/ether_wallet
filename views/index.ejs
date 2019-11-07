@@ -7,19 +7,44 @@
 
 <body>
   <% include navi/header %>
+
+  <% include navi/body %>
+
   <div class="container">
-    <form action="/main/login_process" method="post">
+    <form>
       <div class="form-group">
         <label for="id">id</label>
         <input type="text" class="form-control" id="id" name="id" placeholder="id를 입력하세요"><br />
-        
+
         <label for="password">password</label>
         <input type="password" class="form-control" id="password" name="password" placeholder="password를 입력하세요"><br />
       </div>
-      <button type="submit" class="btn btn-outline-info">로그인</button>
+      <button type="submit" class="btn btn-outline-info" id="login">로그인</button>
       <button type="button" class="btn btn-outline-dark" onclick="location.href='./create'">계정생성</button>
     </form>
   </div>
+
+  <script>
+    $('#login').click(function () {
+      $.ajax({
+        url: 'http://localhost:3000/main/login_process',
+        dataType: 'json',
+        type: 'POST',
+        data: {
+          'id': $('#id').val(),
+          'password': $('#password').val()
+        },
+        success: function (result, body, {status}) {
+          console.log(status)
+          if (status === 200) {
+            alert("아이디 또는 비밀번호가 일치하지 않습니다.")
+          } else if (status === 202) {
+           window.location.href = `http://localhost:3000/main`
+          }
+        }
+      });
+    })
+  </script>
 </body>
 
 </html>

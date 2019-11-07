@@ -26,28 +26,33 @@ router.use(session({
 
 router.post('/login_process', function (req, res) {
     let { id, password } = req.body;
+
     var sql = 'select * from wallet_info where userid=?'
     db.query(sql, [id], function (err, result) {
-        if (result.length && result[0].password === password) {
-            req.session.is_logined = true;
-            req.session.userid = result[0].userid;
-            req.session.password = result[0].password;
-            req.session.private_key = result[0].private_key;
-            req.session.public_key = result[0].public_key;
-            req.session.save(function () {
-                return res.redirect('/main');
-            });
-        } 
-        else {
-            return res.redirect('/err');
-        }
+        console.log(result)
+        console.log(result[0].password)
+        bcrypt.compare(password, result[0].password, function (err, data) {
+            if (data === true) {
+                req.session.is_logined = true;
+                req.session.userid = result[0].userid;
+                req.session.password = result[0].password;
+                req.session.private_key = result[0].private_key;
+                req.session.public_key = result[0].public_key;
+                req.session.save(function () {
+                    return res.status(202).json({});
+                });
+            } else {
+                return res.status(200).json({});
+            }
+        })
+
     });
 });
 
 router.get('/', async function (req, res) {
     let title = "Main"
     let { userid, public_key, is_logined } = req.session;
-    if(!is_logined){
+    if (!is_logined) {
         return res.redirect('/')
     }
     await web3.eth.getBalance(public_key, function (err, wei) {
@@ -55,20 +60,20 @@ router.get('/', async function (req, res) {
     });
 
     var sql = 'select txhash from txhash where userid = ?'
-    db.query(sql, [userid], function(err, result) {
-        if(err) {
+    db.query(sql, [userid], function (err, result) {
+        if (err) {
             return res.render('/err')
         }
         //let TxHashList = result[0].txhash;
         let txhash_list = [];
-        for(i=0; i < result.length; i++){
+        for (i = 0; i < result.length; i++) {
             txhash_list.push(result[i].txhash)
         }
-        return res.render('main', { title, userid, public_key, balance, txhash_list});
+        return res.render('main', { title, userid, public_key, balance, txhash_list });
     })
 });
 
-router.get('/session_destroy', function (req, res) {    
+router.get('/session_destroy', function (req, res) {
     req.session.destroy();  // 세션 삭제
     res.clearCookie('sid'); // 세션 쿠키 삭제
     res.redirect('/');
