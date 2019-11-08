@@ -7,23 +7,8 @@
 
 <body>
     <% include navi/header %>
-    
-    <% include navi/body %>
-    <div class="container">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenubutton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Rosten
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#" name="main">이더리움 메인넷</a>
-                <a class="dropdown-item" href="#" name="ropsten">Ropsten 테스트넷</a>
-                <a class="dropdown-item" href="#" name="kovan">Kovan 테스트넷</a>
-                <a class="dropdown-item" href="#" name="rinkeby">Rinkeby 테스트넷</a>
-                <a class="dropdown-item" href="#" name="local">로컬호스트 8545</a>
-            </div>
-        </div>
 
+    <div class="container">
         <!--계정확인-->
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
             style="width:44%;">
@@ -34,7 +19,7 @@
                         <th scope="col"><%= userid %></th>
                     </tr>
                     <tr>
-                        <th scope="row"><%= public_key %></th>
+                        <th id="publickey" scope="row"><%= public_key %></th>
                     </tr>
                 </table>
             </div>
@@ -48,11 +33,10 @@
                     <h3> <%= balance %> Ether </h3>
                     </p>
 
-                    <button type="button" class="btn btn-outline-info">입금</button>
-
-                    <button type="button" class="btn btn-outline-info" onclick="location.href='/send'">전송</button>
-                    <button type="button" class="btn btn-outline-info" id="logout" name="logout"
-                        onclick="location.href='/main/session_destroy'">로그아웃</button>
+                    <button type="button" class="btn btn-outline-info" id="getEther">입금</button>
+                    <button type="button" class="btn btn-outline-info" id="send">전송</button>
+                    <button type="button" class="btn btn-outline-info" id="logout">로그아웃</button>
+                    <button type="button" class="btn btn-outline-info" id="account">개인키 내보내기</button>
                 </div>
 
                 <!--히스토리-->
@@ -71,6 +55,43 @@
         </div>
 
     </div>
+
+
+    <script>
+        $('#send').click(function () {
+            window.location.href = 'http://localhost:3000/send'
+        });
+
+        $('#logout').click(function () {
+            $.ajax({
+                url: 'http://localhost:3000/main/session_destroy',
+                success: function (result, body, { status }) {
+                    window.location.href = 'http://localhost:3000/'
+                }
+            });
+        })
+
+        $('#getEther').click(function () {
+            $.ajax({
+                url: 'https://faucet.metamask.io/',
+                dataType: 'json',
+                type: 'POST',
+                data: $('#publickey').text(),
+                success: function (result, body, { status }) {
+                    $.ajax({
+                        url: 'http://localhost:3000/main/deposit',
+                        dataType: 'json',
+                        type: 'POST',
+                        data: result
+                    })
+                }
+            });
+        })
+
+        $('#account').click(function () {
+            window.location.href = 'http://localhost:3000/main/private'
+        });
+    </script>
 </body>
 
 </html>

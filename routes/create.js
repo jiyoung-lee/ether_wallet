@@ -12,7 +12,6 @@ const MySQLStore = require('express-mysql-session')(session);
 
 router.use(bodyParser.urlencoded({ extended: false }));
 
-
 router.use(session({
     secret: 'asadlfkj!@#',
     resave: false,
@@ -39,9 +38,9 @@ router.post('/create_process', function (req, res) {
     let sql = 'insert into wallet_info(userid, password, public_key, private_key) values(?, ?, ?, ?)';
     db.query(sql, [id, password1, account.address, privatekey1], function (err, result) {
         if(err){
-            return res.redirect('/err');
+            return res.status(200).json({});
         } else {
-        return res.redirect('/');
+            return res.status(202).json({});
         }
     })
 });

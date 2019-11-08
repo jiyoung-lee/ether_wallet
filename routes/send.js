@@ -28,7 +28,7 @@ router.use(session({
 router.get('/', function (req, res) {
   let { is_logined } = req.session;
 
-  if (!is_logined) {
+  if (is_logined !== true) {
     return res.redirect('/')
   }
   res.render('send', { title: 'Send' });
@@ -40,13 +40,15 @@ router.post('/send_process', async function (req, res) {
 
   let privatekey = CryptoJS.AES.decrypt(private_key, '123').toString(CryptoJS.enc.Utf8);
 
+  //주소 길이조건
   if (toAddress.length !== 42) {
-    return res.redirect('/err')
+    return res.status(201).json({});
   }
 
+  //올바른 주소 확인
   let ckad = web3.utils.checkAddressChecksum(toAddress);
   if (ckad === false) {
-    return res.redirect('/err')
+    return res.status(201).json({});
   }
 
   let privateKey_ran = Buffer.from(privatekey.substring(2), 'hex');
@@ -69,16 +71,15 @@ router.post('/send_process', async function (req, res) {
   let serializedTx = tx.serialize();
   web3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex'), function (err, hash) {
     if (err) {
-      console.log('잔액부족')
-      return res.redirect('/err')
+      return res.status(203).json({});
     }
 
     var sql = 'insert into txhash (userid, txhash) values(?, ?)'
     db.query(sql, [userid, hash], function (err, result) {
       if (err) {
-        return res.redirect('/err')
+        return res.status(200).json({});
       }
-      return res.redirect('/main')
+      return res.status(202).json({});
     });
   });
 });

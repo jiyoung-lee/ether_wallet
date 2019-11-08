@@ -7,21 +7,47 @@
 
 <body>
     <% include navi/header %>
-    
-    <% include navi/body %>
+
     <div class="container">
-        <form action="/create/create_process" method="post">
+        <form>
             <div class="form-group">
                 <label for="id1">id</label>
-                <input type="text" class="form-control" name="id" id="id" placeholder="id를 입력하세요"><br />
+                <input type="text" class="form-control" id="id" placeholder="id를 입력하세요"><br />
+
                 <label for="password1">password</label>
-                <input type="password" class="form-control" name="password" id="password"
-                    placeholder="password를 입력하세요"><br />
+                <input type="password" class="form-control" id="password" placeholder="password를 입력하세요"><br />
             </div>
-            <button type="submit" class="btn btn-outline-info">생성</button>
-            <button type="button" class="btn btn-outline-dark" onclick="location.href='/'">취소</button>
+
+            <button type="button" class="btn btn-outline-info" id="create">생성</button>
+            <button type="button" class="btn btn-outline-dark" id="cancel">취소</button>
         </form>
     </div>
+
+    <script>
+        $('#create').click(function () {
+            $.ajax({
+                url: 'http://localhost:3000/create/create_process',
+                dataType: 'json',
+                type: 'POST',
+                data: {
+                    'id': $('#id').val(),
+                    'password': $('#password').val()
+                },
+                success: function (result, body, { status }) {
+                    if (status === 200) {
+                        alert('아이디 중복')
+                    } else if (status === 202) {
+                        alert('계정생성 완료!')
+                        window.location.href = 'http://localhost:3000/'
+                    }
+                }
+            });
+        })
+
+        $('#cancel').click(function () {
+            window.location.href = 'http://localhost:3000/'
+        }) 
+    </script>
 </body>
 
 </html>
