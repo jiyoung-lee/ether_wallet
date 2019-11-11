@@ -24,7 +24,7 @@ router.use(session({
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  return res.render('index', { title: 'INDEX' });
+  return res.render('index', { title: 'Login' });
 });
 
 router.post('/login_process', function (req, res) {
