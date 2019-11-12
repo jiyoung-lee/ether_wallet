@@ -1,35 +1,49 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <% include navi/head %>
+    <link href="css/wallet/login.css" rel="stylesheet">
 </head>
 
 <body>
-    <% include navi/header %>
-
-    <div class="container">
-        <div class="dropdown">
-            <div
-                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Wallet Info</h1>
-            </div>
-
-            <form>
-                <div class="form-group">
-                    <label for="privatekey">To</label>
-                    <input type="text" class="form-control" id="toAddress" placeholder="받는 계정"><br />
-
-                    <label for="privatekey">Value</label>
-                    <input type="text" class="form-control" id="value" placeholder="수량"><br />
-
-                    <label for="privatekey">Gas Price</label>
-                    <input type="text" class="form-control" id="gasPrice" placeholder="수수료"><br />
-
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="login_card">
+                <div class="d-flex justify-content-center">
+                    <div class="logo_container">
+                        <img src="images/pig.jpg" class="logo" alt="Logo">
+                    </div>
                 </div>
-                <button type="button" class="btn btn-outline-info" id="send">전송</button>
-                <button type="button" class="btn btn-outline-dark" id="cancel">취소</button>
-            </form>
+                <div class="d-flex justify-content-center form_container">
+                    <form>
+                        <div class="login_name"><% include navi/header %></div><br />
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text">To</span>
+                            </div>
+                            <input type="text" id="toAddress" class="form-control input_user" value="" placeholder="받는 계정">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text">Value</span>
+                            </div>
+                            <input type="text" id="value" class="form-control input_pass" value=""
+                                placeholder="수량">
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Gas Price</span>
+                                </div>
+                                <input type="text" id="gasPrice" class="form-control input_user" value="" placeholder="수수료">
+                            </div>
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <button type="button" id="send" class="btn login_btn">send</button>
+                            <button type="button" id="home" class="btn login_btn">home</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -59,7 +73,7 @@
             });
         })
 
-        $('#cancel').click(function () {
+        $('#home').click(function () {
             window.location.href = 'http://localhost:3000/main'
         }) 
     </script>

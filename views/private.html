@@ -1,0 +1,39 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include navi/head %>
+</head>
+
+<body>
+  <% include navi/header %>
+
+  <div class="container">
+    <form>
+      <div class="form-group">
+        <label for="password">password</label>
+        <input type="password" class="form-control" id="password" placeholder="password를 입력하세요"><br />
+      </div>
+      <button type="button" class="btn btn-outline-info" id="auth">승인</button>
+
+    </form>
+  </div>
+
+  <script>
+    $('#auth').click(function () {
+        $.ajax({
+                url: 'http://localhost:3000/main/account',
+                dataType: 'json',
+                type: 'POST',
+                data: {
+                    'password': $('#password').val()
+                },
+                success: function (result, body, { status }) {
+
+                }
+            })
+    })
+  </script>
+</body>
+
+</html> -->

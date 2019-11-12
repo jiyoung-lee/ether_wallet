@@ -6,7 +6,7 @@ html {
     background: #7c7c7c !important;
 }
 
-.user_card {
+.login_card {
     height: 400px;
     width: 350px;
     margin-top: auto;
@@ -18,12 +18,10 @@ html {
     flex-direction: column;
     padding: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
 }
 
-.brand_logo_container {
+.logo_container {
     position: absolute;
     height: 170px;
     width: 170px;
@@ -34,7 +32,7 @@ html {
     text-align: center;
 }
 
-.brand_logo {
+.logo {
     height: 150px;
     width: 150px;
     border-radius: 50%;
@@ -43,6 +41,10 @@ html {
 
 .form_container {
     margin-top: 100px;
+}
+
+.login_name {
+    text-align: center;
 }
 
 .login_btn {
@@ -58,7 +60,7 @@ html {
 }
 
 .login_container {
-    padding: 0 2rem;
+    padding: 0 1rem;
 }
 
 .input-group-text {
@@ -73,6 +75,18 @@ html {
     box-shadow: none !important;
     outline: 0px !important;
 }
-.login_name {
+
+.public_key {
     text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 290px;
+}
+
+.txhash {
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 290px;
+    color: #7C7C7C;
 }

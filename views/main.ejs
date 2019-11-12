@@ -1,61 +1,49 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <% include navi/head %>
+    <link href="css/wallet/login.css" rel="stylesheet">
 </head>
 
 <body>
-    <% include navi/header %>
-
-    <div class="container">
-        <!--계정확인-->
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-            style="width:44%;">
-            <div class="text-center">
-
-                <table class="table table-bordered">
-                    <tr>
-                        <th scope="col"><%= userid %></th>
-                    </tr>
-                    <tr>
-                        <th id="publickey" scope="row"><%= public_key %></th>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <!--입금/전송-->
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-            style="width:44%;">
-            <form>
-                <div class="text-center">
-                    <img src="images/bono.png" alt="" style="width: 100px;"><br /><br />
-                    <h3> <%= balance %> Ether </h3>
-                    </p>
-
-                    <button type="button" class="btn btn-outline-info" id="getEther">입금</button>
-                    <button type="button" class="btn btn-outline-info" id="send">전송</button>
-                    <button type="button" class="btn btn-outline-info" id="logout">로그아웃</button>
-                    <button type="button" class="btn btn-outline-info" id="account">개인키 내보내기</button>
-                </div>
-
-                <!--히스토리-->
-                <div>
-                    <div class="form-group" style="width:50%;">
-                        <h6><label for="exampleInputEmail1">History</label></h6><br>
-                        <ul style="list-style: none;">
-                            <% for(let j = 0; j < 5; j++) { %>
-                            <li><a href="https://ropsten.etherscan.io/tx/<%= txhash_list[j] %>">
-                                    <%=  txhash_list[j] %></a></li>
-                            <% } %>
-                        </ul>
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="login_card">
+                <div class="d-flex justify-content-center">
+                    <div class="logo_container">
+                        <img src="images/pig.jpg" class="logo" alt="Logo">
                     </div>
                 </div>
-            </form>
+                <div class="form_container">
+                    <form>
+                            <div class="login_container">
+                                <h5 class="login_name"><%= userid %></h5>
+                                <p class="public_key" style="text-align: center;"><%= public_key %></p>
+                                <h3  class="login_name"><%= balance %> Ether</h3>
+                            </div>
+
+                        <div class="login_container">
+                            <h6 class="txhash"><% for(let j = 0; j < 3; j++) { %>
+                                <a href="https://ropsten.etherscan.io/tx/<%= txhash_list[j] %>" style="color:#7C7C7C"></style>
+                                    <%=  txhash_list[j] %></a>
+                                <% } %>
+                            </h6>
+                        </div>
+
+                        <div class="d-flex justify-content-center md-1 login_container">
+                            <button type="button" id="getEther" class="btn login_btn">getEther</button>
+                            <button type="button" id="account" class="btn login_btn">account</button>
+                        </div>
+                            <div class="d-flex justify-content-center md-1 login_container">
+                            <button type="button" id="send" class="btn login_btn">send</button>
+                            <button type="button" id="logout" class="btn login_btn">logout</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-
     </div>
-
 
     <script>
         $('#send').click(function () {
