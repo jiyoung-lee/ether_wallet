@@ -7,8 +7,8 @@ html {
 }
 
 .login_card {
-    height: 400px;
-    width: 350px;
+    height: 500px;
+    width: 400px;
     margin-top: auto;
     margin-bottom: auto;
     background:	#f6d9d5;
@@ -40,7 +40,7 @@ html {
 }
 
 .form_container {
-    margin-top: 100px;
+    margin-top: 10px;
 }
 
 .login_name {
