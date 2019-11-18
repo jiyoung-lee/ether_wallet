@@ -4,9 +4,10 @@
 <head>
     <% include navi/head %>
     <link href="css/wallet/layout.css" rel="stylesheet">
+    
 </head>
 
-<body>
+<body style="font-family: 'Kanit', sans-serif;">
     <div class="container">
         <header>
             <h3>EtherWallet</h3>
@@ -15,9 +16,9 @@
         </header>
         <section class="content">
             <main>
-                <h4 style="text-align: center"><%= balance %> Ether</h4>
+                <h4 style="text-align: center" ><%= balance %> ETH</h4>
                 <br />
-                <h6 class="txhash"><% for(let j = 0; j < 5; j++) { %>
+                <h6 class="txhash"><% for(let j = 0; j < 3; j++) { %>
                     <a href="https://ropsten.etherscan.io/tx/<%= txhash_list[j] %>" style="color:#7C7C7C">
                         </style>
                         <%=  txhash_list[j] %></a>
@@ -50,26 +51,33 @@
                 }
             });
         })
-
+        $(document).ready(() => {
         $('#getEther').click(function () {
             $.ajax({
                 url: 'https://faucet.metamask.io/',
-                dataType: 'json',
                 type: 'POST',
-                data: $('#publickey').text(),
+                data: $('#public_key').text(),
                 success: function (result, body, { status }) {
                     $.ajax({
                         url: 'http://localhost:3000/main/deposit',
-                        dataType: 'json',
                         type: 'POST',
-                        data: result
+                        data:  { addr: JSON.stringify(result) }
                     })
-                }
+                },
+                error: ({ status }) => {
+              const statusMsg = {
+                "429": () => alert('Too many request'),
+                "500": () => alert('Fauset ServerError'),
+              }
+              let msg = statusMsg[`${status}`]
+              if (msg) msg()
+            }
             });
         })
+    });
 
         $('#account').click(function () {
-            window.location.href = 'http://localhost:3000/main/private'
+            window.location.href = 'http://localhost:3000/privatekey'
         });
     </script>
 </body>

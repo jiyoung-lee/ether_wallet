@@ -57,33 +57,11 @@ router.get('/session_destroy', function (req, res) {
 router.post('/deposit', async function (req, res) {
     let { userid } = req.session;
     let { result } = req.body;
-    console.log(req.body.result)
-
-    var sql = 'insert into txhash (userid, txhash) values(?, ?)'
-    db.query(sql, [userid, result], function (err, results) {
-        if (err) {
-            return res.status(200).json({});
-        }
-        return res.status(202).json({});
-    });
+    result = result.substring(1, 67)
+    db.query('INSERT INTO txhash(userid, txhash) values(?, ?)', [userid, result], 
+    await function (err, result) {
+      return res.json({})
+    })
 });
-
-router.get('/private', function (req, res, next) {
-    return res.render('private', { title: 'Private' });
-  });
-
-router.post('/account', function (req, res) {
-    let { password } = req.body;
-    let { private_key, userid} = req.session;
-    let privatekey = CryptoJS.AES.decrypt(private_key, '123').toString(CryptoJS.enc.Utf8);
-
-    var sql = 'select private_key, password from wallet_info where userid=?'
-    bcrypt.compare(password, result[0].password, function (err, data) {
-        if (data === true) {
-            return res.status(202).json({});
-        }
-    });
-
-})
 
 module.exports = router;

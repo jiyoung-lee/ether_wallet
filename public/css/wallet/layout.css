@@ -31,7 +31,7 @@ header {
     align-items: center;
     justify-content: center;
     height: 140px;
-    border-bottom: 1px solid #7C7C7C;
+    border-bottom: 2px solid #C0392B;
 
 }
 
@@ -46,6 +46,7 @@ h3 {
     align-items: center;
     justify-content: center;
     border-radius: 5px;
+    font-family: 'Fredoka One', cursive;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 

@@ -6,6 +6,7 @@ const indexRouter = require('./routes/index');
 const createRouter = require('./routes/create');
 const mainRouter = require('./routes/main');
 const sendRouter = require('./routes/send');
+const privatekeyRouter = require('./routes/privatekey');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use('/', indexRouter);
 app.use('/create', createRouter);
 app.use('/main', mainRouter);
 app.use('/send', sendRouter);
+app.use('/privatekey', privatekeyRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

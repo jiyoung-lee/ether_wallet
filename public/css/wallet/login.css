@@ -90,3 +90,12 @@ html {
     width: 290px;
     color: #7C7C7C;
 }
+
+.hidden {display:none;}
+
+.privatekey {
+    text-align: left;
+    width: 290px;
+    word-wrap: break-word;
+    font-size: 18px;
+  }
