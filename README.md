@@ -33,7 +33,7 @@
 
   ------
 
-  <img src="C:\Users\jiyoung\Desktop\ether_wallet\public\images\SingUp.png" alt="SingUp" style="zoom: 50%;" />
+  <img src="..\public\images\SingUp.png" alt="SingUp" style="zoom: 50%;" />
 
   
 
@@ -49,7 +49,7 @@
 
   
 
-  <img src="C:\Users\jiyoung\Desktop\ether_wallet\public\images\Login.png" alt="Login" style="zoom:50%;" />
+  <img src="..\public\images\Login.png" alt="Login" style="zoom:50%;" />
 
   
 
