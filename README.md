@@ -79,7 +79,7 @@
 
   ###### Send 화면
 
-------
+  ------
 
   <img src="public/images/Send.png" alt="Send" width="250" height="300" />
 
@@ -91,7 +91,7 @@
 
   ###### Privatekey 화면
 
-------
+  ------
 
   <img src="public/images/Privatekey1.png" alt="Privatekey1" width="250" height="300" />
 
@@ -105,5 +105,5 @@
 
 
 
-------
+  ------
 
