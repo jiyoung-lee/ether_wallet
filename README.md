@@ -33,7 +33,7 @@
 
   ------
 
-  <img src="public/images/SingUp.png" alt="SingUp" width="250" height="300" />
+  <img src="public/images/SingUp.png" alt="SingUp" width="250" height="300" /><br/>
 
   
 
