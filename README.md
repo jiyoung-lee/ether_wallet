@@ -49,7 +49,7 @@
 
   
 
-  <img src="public/images/Login.png" alt="Login" width="300" height="300" />
+  <img src="public/images/Login.png" alt="Login" width="300" height="250" />
 
   
 
