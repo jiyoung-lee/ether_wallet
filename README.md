@@ -33,7 +33,7 @@
 
   ------
 
-  <img src="..\public\images\SingUp.png" alt="SingUp" width="300" height="300" />
+  <img src="public/images/SingUp.png" alt="SingUp" width="250" height="300" />
 
   
 
@@ -63,7 +63,7 @@
 
   
 
-  <img src="C:\Users\jiyoung\Desktop\ether_wallet\public\images\Main2.png" alt="Main2" style="zoom:50%;" />
+  <img src="public/images/Main2.png" alt="Main2" width="250" height="300" />
 
   
 
@@ -81,7 +81,7 @@
 
 ------
 
-  <img src="C:\Users\jiyoung\Desktop\ether_wallet\public\images\Send.png" alt="Send" style="zoom:50%;" />
+  <img src="public/images/Send.png" alt="Send" width="250" height="300" />
 
   > 받는 사람의 계정이 올바르지 않거나 user가 소유한 이더값이 
   >
@@ -93,11 +93,11 @@
 
 ------
 
-  <img src="C:\Users\jiyoung\Desktop\ether_wallet\public\images\Privatekey1.png" alt="Privatekey1" style="zoom: 50%;" />
+  <img src="public/images/Privatekey1.png" alt="Privatekey1" width="250" height="300" />
 
   
 
-  <img src="C:\Users\jiyoung\Desktop\ether_wallet\public\images\Privatekey2.png" alt="Privatekey2" style="zoom:50%;" />
+  <img src="public/images/Privatekey2.png" alt="Privatekey2" width="250" height="300" />
 
   
 
