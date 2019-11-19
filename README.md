@@ -68,7 +68,7 @@
   
 
 
-  <img src="public/images/Main2.png" alt="Main2" width="250" height="300" /><br/>
+  <img src="public/images/Main2.png" alt="Main2" width="250" height="300" />
 
   
 
@@ -102,7 +102,7 @@
 
   
 
-  <img src="public/images/Privatekey2.png" alt="Privatekey2" width="250" height="300" /><br/>
+  <img src="public/images/Privatekey2.png" alt="Privatekey2" width="250" height="300" />
 
   
 
