@@ -50,7 +50,7 @@
 
   
 
-  <img src="public/images/Login.png" alt="Login" width="250" height="300" />
+  <img src="public/images/Login.png" alt="Login" width="250" height="300" /><br/>
 
   
 
@@ -64,7 +64,7 @@
 
   
 
-  <img src="public/images/Main2.png" alt="Main2" width="250" height="300" />
+  <img src="public/images/Main2.png" alt="Main2" width="250" height="300" /><br/>
 
   
 
@@ -82,7 +82,7 @@
 
   ------
 
-  <img src="public/images/Send.png" alt="Send" width="250" height="300" />
+  <img src="public/images/Send.png" alt="Send" width="250" height="300" /><br/>
 
   > 받는 사람의 계정이 올바르지 않거나 user가 소유한 이더값이 
   >
