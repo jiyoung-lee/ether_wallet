@@ -64,7 +64,7 @@
 
   
 
-  <img src="public/images/Main1.png" alt="Main1" width="250" height="300" />
+  <img src="public/images/main1.png" alt="main1" width="250" height="300" />
   
 
 
