@@ -33,7 +33,7 @@
 
   ------
 
-  <img src="..\public\images\SingUp.png" alt="SingUp" style="zoom: 50%;" />
+  <img src="..\public\images\SingUp.png" alt="SingUp" width="300" height="300" />
 
   
 
