@@ -3,24 +3,9 @@ const router = express.Router();
 const bcrypt = require('bcrypt-nodejs');
 
 const db = require('../db/db_info')
-const session = require('express-session');
 const bodyParser = require('body-parser');
-const MySQLStore = require('express-mysql-session')(session);
 
 router.use(bodyParser.urlencoded({ extended: false }));
-
-router.use(session({
-    secret: 'asadlfkj!@#',
-    resave: false,
-    saveUninitialized: true,
-    store: new MySQLStore({
-        host: 'localhost',
-        port: 3306,
-        user: 'root',
-        password: '111111',
-        database: 'ethwallet'
-    })
-}));
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -31,7 +16,7 @@ router.post('/login_process', function (req, res) {
   let { id, password } = req.body;
 
   var sql = 'select * from wallet_info where userid=?'
-  db.query(sql, [id], function (err, result) {
+  db.mysql.query(sql, [id], function (err, result) {
       bcrypt.compare(password, result[0].password, function (err, data) {
           if (data === true) {
               req.session.is_logined = true;

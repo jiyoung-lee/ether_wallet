@@ -4,24 +4,10 @@ const router = express.Router();
 const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io'));
 
 const db = require('../db/db_info')
-const session = require('express-session');
 const bodyParser = require('body-parser');
-const MySQLStore = require('express-mysql-session')(session);
+
 
 router.use(bodyParser.urlencoded({ extended: false }));
-
-router.use(session({
-    secret: 'asadlfkj!@#',
-    resave: false,
-    saveUninitialized: true,
-    store: new MySQLStore({
-        host: 'localhost',
-        port: 3306,
-        user: 'root',
-        password: '111111',
-        database: 'ethwallet'
-    })
-}));
 
 router.get('/', async function (req, res) {
     let title = "Main"
@@ -35,7 +21,7 @@ router.get('/', async function (req, res) {
     });
 
     var sql = 'select txhash from txhash where userid = ?'
-    db.query(sql, [userid], function (err, result) {
+    db.mysql.query(sql, [userid], function (err, result) {
         if (err) {
             return res.render('err')
         }
@@ -58,7 +44,7 @@ router.post('/deposit', async function (req, res) {
     let { userid } = req.session;
     let { result } = req.body;
     result = result.substring(1, 67)
-    db.query('INSERT INTO txhash(userid, txhash) values(?, ?)', [userid, result], 
+    db.mysql.query('INSERT INTO txhash(userid, txhash) values(?, ?)', [userid, result], 
     await function (err, result) {
       return res.json({})
     })

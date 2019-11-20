@@ -6,24 +6,9 @@ const Tx = require('ethereumjs-tx').Transaction;
 const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io'));
 
 const db = require('../db/db_info')
-const session = require('express-session');
 const bodyParser = require('body-parser');
-const MySQLStore = require('express-mysql-session')(session);
 
 router.use(bodyParser.urlencoded({ extended: false }));
-
-router.use(session({
-  secret: 'asadlfkj!@#',
-  resave: false,
-  saveUninitialized: true,
-  store: new MySQLStore({
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: '111111',
-    database: 'ethwallet'
-  })
-}));
 
 router.get('/', function (req, res) {
   let { is_logined } = req.session;
@@ -75,7 +60,7 @@ router.post('/send_process', async function (req, res) {
     }
 
     var sql = 'insert into txhash (userid, txhash) values(?, ?)'
-    db.query(sql, [userid, hash], function (err, result) {
+    db.mysql.query(sql, [userid, hash], function (err, result) {
       if (err) {
         return res.status(200).json({});
       }
