@@ -29,27 +29,28 @@
 
 + #### **기능**
 
-  ###### SingUp 화면
+  ##### SingUp 화면
 
   ------
 
-  <img src="..\public\images\SingUp.png" alt="SingUp" style="zoom: 50%;" />
+  <img src="public/images/SingUp.png" alt="SingUp" width="250" height="300" /><br/>
 
   
+
 
   > 사용자가 원하는 userid와 password 입력을 통해 회원가입을 한다.
   >
   > userid는 중복된 값을 가질 수 없다.
 
   
-
-  ###### Login 화면
+  
+  ##### Login 화면
 
   ------
 
   
 
-  <img src="..\public\images\Login.png" alt="Login" style="zoom:50%;" />
+  <img src="public/images/Login.png" alt="Login" width="250" height="300" /><br/>
 
   
 
@@ -57,13 +58,17 @@
   >
   > 만약 userid가 없다면 SingUp 버튼을 클릭해 회원가입 한다.
 
-  ###### Main 화면
+  ##### Main 화면
 
   ------
 
   
 
-  <img src="C:\Users\jiyoung\Desktop\ether_wallet\public\images\Main2.png" alt="Main2" style="zoom:50%;" />
+  <img src="public/images/main1.png" alt="main1" width="250" height="300" />
+  
+
+
+  <img src="public/images/Main2.png" alt="Main2" width="250" height="300" />
 
   
 
@@ -77,11 +82,11 @@
 
   
 
-  ###### Send 화면
+  ##### Send 화면
 
-------
+  ------
 
-  <img src="C:\Users\jiyoung\Desktop\ether_wallet\public\images\Send.png" alt="Send" style="zoom:50%;" />
+  <img src="public/images/Send.png" alt="Send" width="250" height="300" /><br/>
 
   > 받는 사람의 계정이 올바르지 않거나 user가 소유한 이더값이 
   >
@@ -89,15 +94,15 @@
 
   
 
-  ###### Privatekey 화면
+  ##### Privatekey 화면
 
-------
+  ------
 
-  <img src="C:\Users\jiyoung\Desktop\ether_wallet\public\images\Privatekey1.png" alt="Privatekey1" style="zoom: 50%;" />
+  <img src="public/images/Privatekey1.png" alt="Privatekey1" width="250" height="300" />
 
   
 
-  <img src="C:\Users\jiyoung\Desktop\ether_wallet\public\images\Privatekey2.png" alt="Privatekey2" style="zoom:50%;" />
+  <img src="public/images/Privatekey2.png" alt="Privatekey2" width="250" height="300" />
 
   
 
@@ -105,5 +110,5 @@
 
 
 
-------
+  ------
 
