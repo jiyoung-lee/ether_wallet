@@ -50,7 +50,7 @@
     <script>
         $('#send').click(function () {
             $.ajax({
-                url: 'http://localhost:3000/send/send_process',
+                url: '/send/send_process',
                 dataType: 'json',
                 type: 'POST',
                 data: {
@@ -67,14 +67,14 @@
                         alert('잔액이 부족합니다.')
                     } else if (status === 202) {
                         alert('보내기 성공!')
-                        window.location.href = 'http://localhost:3000/main'
+                        window.location.href = '/main'
                     }
                 }
             });
         })
 
         $('#home').click(function () {
-            window.location.href = 'http://localhost:3000/main'
+            window.location.href = '/main'
         }) 
     </script>
 

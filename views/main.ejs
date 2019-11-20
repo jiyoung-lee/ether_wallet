@@ -40,26 +40,26 @@
     </div>
     <script>
         $('#send').click(function () {
-            window.location.href = 'http://localhost:3000/send'
+            window.location.href = '/send'
         });
 
         $('#logout').click(function () {
             $.ajax({
-                url: 'http://localhost:3000/main/session_destroy',
+                url: '/main/session_destroy',
                 success: function (result, body, { status }) {
-                    window.location.href = 'http://localhost:3000/'
+                    window.location.href = '/'
                 }
             });
         })
         $(document).ready(() => {
-        $('#getEther').click(function () {
+        $('#getEther').click(function () {   
             $.ajax({
                 url: 'https://faucet.metamask.io/',
                 type: 'POST',
-                data: $('#public_key').text(),
+                data: $('.public_key').text(),
                 success: function (result, body, { status }) {
                     $.ajax({
-                        url: 'http://localhost:3000/main/deposit',
+                        url: '/main/deposit',
                         type: 'POST',
                         data:  { addr: JSON.stringify(result) }
                     })
@@ -77,7 +77,7 @@
     });
 
         $('#account').click(function () {
-            window.location.href = 'http://localhost:3000/privatekey'
+            window.location.href = '/privatekey'
         });
     </script>
 </body>

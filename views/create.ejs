@@ -47,7 +47,7 @@
     <script>
         $('#create').click(function () {
             $.ajax({
-                url: 'http://localhost:3000/create/create_process',
+                url: '/create/create_process',
                 dataType: 'json',
                 type: 'POST',
                 data: {
@@ -59,7 +59,7 @@
                         alert('아이디 중복')
                     } else if (status === 202) {
                         alert('계정생성 완료!')
-                        window.location.href = 'http://localhost:3000/'
+                        window.location.href = '/'
                     }
                 }
             });

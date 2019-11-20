@@ -65,7 +65,7 @@
       $('#auth').click(function () {
         $('.show').removeClass('hidden');
         $.ajax({
-          url: 'http://localhost:3000/privatekey/account',
+          url: '/privatekey/account',
           dataType: 'json',
           type: 'POST',
           data: {
@@ -91,10 +91,10 @@
       })
     })
     $('#home').click(function () {
-      window.location.href = 'http://localhost:3000/main'
+      window.location.href = '/main'
     })
     $('#cancel').click(function () {
-      window.location.href = 'http://localhost:3000/main'
+      window.location.href = '/main'
     }) 
   </script>
 </body>

@@ -47,7 +47,7 @@
   <script>
     $('#login').click(function () {
       $.ajax({
-        url: 'http://localhost:3000/login_process',
+        url: '/login_process',
         dataType: 'json',
         type: 'POST',
         data: {
@@ -59,14 +59,14 @@
             alert('아이디 또는 비밀번호가 일치하지 않습니다.')
           } else if (status === 202) {
             alert('로그인 성공')
-            window.location.href = 'http://localhost:3000/main'
+            window.location.href = '/main'
           }
         }
       });
     })
 
     $('#create').click(function () {
-      window.location.href = 'http://localhost:3000/create'
+      window.location.href = '/create'
     })
 
   </script>
